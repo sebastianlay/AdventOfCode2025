@@ -5,4 +5,6 @@
   <Project Path="Day02Part02/Day02Part02.csproj" />
   <Project Path="Day03Part01/Day03Part01.csproj" />
   <Project Path="Day03Part02/Day03Part02.csproj" />
+  <Project Path="Day04Part01/Day04Part01.csproj" />
+  <Project Path="Day04Part02/Day04Part02.csproj" />
 </Solution>
