@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Text.RegularExpressions;
-
-namespace Day02Part02;
+﻿namespace Day02Part02;
 
 internal static partial class Program
 {

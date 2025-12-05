@@ -1,6 +1,4 @@
-﻿using System.Globalization;
-
-var sum = 0L;
+﻿var sum = 0L;
 var input = File.ReadLines("input").First();
 foreach (var range in input.Split(','))
 {

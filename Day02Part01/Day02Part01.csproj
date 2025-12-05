@@ -9,9 +9,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Update="input">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
+        <None Update="input">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Using Include="System.Globalization" />
     </ItemGroup>
 
 </Project>
