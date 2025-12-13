@@ -1,5 +1,4 @@
 ﻿var sum = 0u;
-
 var grid = File.ReadAllLines("input");
 var width = grid[0].Length;
 var height = grid.Length;
