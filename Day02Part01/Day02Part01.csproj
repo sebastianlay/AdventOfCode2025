@@ -8,14 +8,14 @@
         <AnalysisMode>Recommended</AnalysisMode>
     </PropertyGroup>
 
+    <PropertyGroup>
+      <NoWarn>1701;1702;CA1305</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
         <None Update="input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Using Include="System.Globalization" />
     </ItemGroup>
 
 </Project>

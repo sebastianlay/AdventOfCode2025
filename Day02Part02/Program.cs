@@ -1,38 +1,23 @@
-﻿namespace Day02Part02;
+﻿var sum = 0L;
+var regex = new Regex(@"^(.*)\1+$", RegexOptions.Compiled);
+var input = File.ReadLines("input").First();
 
-internal static partial class Program
+foreach (var range in input.Split(','))
 {
-    [GeneratedRegex(@"^(.*)\1+$")]
-    private static partial Regex IsInvalidRegex();
+    var ids = range.Split('-').Select(long.Parse).ToArray();
+    sum += Range(ids[0], ids[1]).Where(IsInvalid).Sum();
+}
 
-    public static void Main()
+Console.WriteLine($"Sum: {sum}");
+return;
+
+bool IsInvalid(long id) => regex.IsMatch(id.ToString());
+
+static IEnumerable<long> Range(long start, long end)
+{
+    while (start <= end)
     {
-        var sum = 0L;
-        var input = File.ReadLines("input").First();
-        foreach (var range in input.Split(','))
-        {
-            var ids = range.Split('-');
-            if (!long.TryParse(ids[0], out var min) || !long.TryParse(ids[1], out var max))
-                continue;
-
-            sum += Range(min, max).Where(IsInvalid).Sum();
-        }
-
-        Console.WriteLine($"Sum: {sum}");
-    }
-
-    private static bool IsInvalid(long id)
-    {
-        var str = id.ToString(CultureInfo.InvariantCulture);
-        return IsInvalidRegex().IsMatch(str);
-    }
-
-    private static IEnumerable<long> Range(long start, long end)
-    {
-        while (start <= end)
-        {
-            yield return start;
-            start++;
-        }
+        yield return start;
+        start++;
     }
 }

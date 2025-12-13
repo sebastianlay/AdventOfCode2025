@@ -8,6 +8,10 @@
         <AnalysisMode>Recommended</AnalysisMode>
     </PropertyGroup>
 
+    <PropertyGroup>
+      <NoWarn>1701;1702;CA1305</NoWarn>
+    </PropertyGroup>
+
     <ItemGroup>
         <None Update="input">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -15,7 +19,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Using Include="System.Globalization" />
         <Using Include="System.Text.RegularExpressions" />
     </ItemGroup>
 
