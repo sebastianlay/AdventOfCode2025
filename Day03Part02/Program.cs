@@ -1,7 +1,7 @@
 ﻿const int rounds = 12;
 var sum = 0L;
-
 var banks = File.ReadLines("input");
+
 foreach (var bank in banks)
 {
     var concatenated = string.Empty;
@@ -16,8 +16,7 @@ foreach (var bank in banks)
         cursor += index + 1;
     }
 
-    if (long.TryParse(concatenated, out var parsed))
-        sum += parsed;
+    sum += long.Parse(concatenated);
 }
 
 Console.WriteLine($"Sum: {sum}");
