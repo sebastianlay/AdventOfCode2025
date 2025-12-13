@@ -21,4 +21,6 @@
   <Project Path="Day10Part02/Day10Part02.csproj" />
   <Project Path="Day11Part01/Day11Part01.csproj" />
   <Project Path="Day11Part02/Day11Part02.csproj" />
+  <Project Path="Day12Part01/Day12Part01.csproj" />
+  <Project Path="Day12Part02/Day12Part02.csproj" />
 </Solution>
