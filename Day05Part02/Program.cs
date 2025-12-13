@@ -1,17 +1,15 @@
 ﻿var input = File.ReadAllLines("input");
 var ranges = input.TakeWhile(i => i.Length > 0).Select(GetRange).ToList();
 while (MergeRanges());
-var fresh = ranges.Sum(range => range.max - range.min + 1);
+var fresh = ranges.Sum(range => range.Max - range.Min + 1);
 
 Console.WriteLine($"Fresh: {fresh}");
 return;
 
-(long min, long max) GetRange(string line)
+(long Min, long Max) GetRange(string line)
 {
-    var split = line.Split('-');
-    var min = long.Parse(split[0], CultureInfo.InvariantCulture);
-    var max = long.Parse(split[1], CultureInfo.InvariantCulture);
-    return (min, max);
+    var split = line.Split('-').Select(long.Parse).ToArray();
+    return (split[0], split[1]);
 }
 
 bool MergeRanges()
@@ -20,11 +18,11 @@ bool MergeRanges()
     {
         for (var j = 0; j < i; j++)
         {
-            if (ranges[i].min > ranges[j].max || ranges[i].max < ranges[j].min)
+            if (ranges[i].Min > ranges[j].Max || ranges[i].Max < ranges[j].Min)
                 continue;
 
-            var min = Math.Min(ranges[i].min, ranges[j].min);
-            var max = Math.Max(ranges[i].max, ranges[j].max);
+            var min = Math.Min(ranges[i].Min, ranges[j].Min);
+            var max = Math.Max(ranges[i].Max, ranges[j].Max);
             ranges.RemoveAt(i);
             ranges.RemoveAt(j);
             ranges.Add((min, max));

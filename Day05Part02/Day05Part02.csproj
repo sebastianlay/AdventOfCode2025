@@ -14,8 +14,4 @@
         </None>
     </ItemGroup>
 
-    <ItemGroup>
-        <Using Include="System.Globalization"/>
-    </ItemGroup>
-
 </Project>
