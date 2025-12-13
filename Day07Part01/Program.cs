@@ -1,9 +1,9 @@
 ﻿var input = File.ReadAllLines("input");
-var splits = 0;
 var width = input[0].Length;
 var start = input[0].IndexOf('S');
 var beams = new bool[width];
 beams[start] = true;
+var splits = 0;
 
 for (var i = 2; i < input.Length; i += 2)
 {
