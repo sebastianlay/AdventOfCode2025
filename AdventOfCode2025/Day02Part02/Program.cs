@@ -16,8 +16,5 @@ bool IsInvalid(long id) => regex.IsMatch(id.ToString());
 static IEnumerable<long> Range(long start, long end)
 {
     while (start <= end)
-    {
-        yield return start;
-        start++;
-    }
+        yield return start++;
 }

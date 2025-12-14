@@ -20,8 +20,5 @@ static bool IsInvalid(long id)
 static IEnumerable<long> Range(long start, long end)
 {
     while (start <= end)
-    {
-        yield return start;
-        start++;
-    }
+        yield return start++;
 }
