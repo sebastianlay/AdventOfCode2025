@@ -1,13 +1,7 @@
 ﻿var grid = File.ReadAllLines("input").Select(x => x.ToCharArray()).ToArray();
-var width = grid[0].Length;
-var height = grid.Length;
-var sum = 0u;
-var offsets = new (int dx, int dy)[]
-{
-    (-1, -1), (0, -1), (1, -1),
-    (-1,  0),          (1,  0),
-    (-1,  1), (0,  1), (1,  1),
-};
+var w = grid[0].Length;
+var h = grid.Length;
+ushort sum = 0;
 
 while (RemoveRolls());
 
@@ -16,40 +10,35 @@ return;
 
 bool RemoveRolls()
 {
-    var removed = 0u;
+    ushort removed = 0;
 
-    for (var y = 0; y < height; y++)
-    {
-        for (var x = 0; x < width; x++)
-        {
-            if (grid[y][x] != '@')
-                continue;
-
-            var adjacent = 0u;
-
-            foreach (var (dx, dy) in offsets)
-                if (At(x + dx, y + dy) == '@')
-                    adjacent++;
-
-            if (adjacent >= 4)
-                continue;
-
-            grid[y][x] = 'x';
-            removed++;
-        }
-    }
+    for (byte y = 0; y < h; y++)
+        for (byte x = 0; x < w; x++)
+            removed += RemoveRoll(y, x);
 
     sum += removed;
     return removed > 0;
 }
 
-char At(int x, int y)
+byte RemoveRoll(byte y, byte x)
 {
-    if (y < 0 || y >= grid.Length)
-        return ' ';
+    if (grid[y][x] != '@')
+        return 0;
 
-    if (x < 0 || x >= grid[y].Length)
-        return ' ';
+    byte adjacent = 0;
 
-    return grid[y][x];
+    for (var dy = y == 0 ? 0 : -1; dy <= (y == h - 1 ? 0 : 1); dy++)
+    {
+        for (var dx = x == 0 ? 0 : -1; dx <= (x == w - 1 ? 0 : 1); dx++)
+        {
+            if (dy == 0 && dx == 0)
+                continue;
+
+            if (grid[y + dy][x + dx] == '@' && ++adjacent == 4)
+                return 0;
+        }
+    }
+
+    grid[y][x] = 'x';
+    return 1;
 }
