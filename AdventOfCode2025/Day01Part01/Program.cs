@@ -1,14 +1,10 @@
 ﻿var position = 50;
-var password = 0;
-
+var password = 0u;
 var instructions = File.ReadAllLines("input");
+
 foreach (var instruction in instructions)
 {
-    if (instruction.Length < 2)
-        continue;
-
-    if (!int.TryParse(instruction[1..], out var offset))
-        continue;
+    var offset = int.Parse(instruction[1..]);
 
     if (instruction[0] == 'L')
         offset *= -1;
