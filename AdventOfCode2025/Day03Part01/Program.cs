@@ -1,21 +1,12 @@
-﻿var sum = 0;
+﻿var sum = 0u;
 var banks = File.ReadLines("input");
 
 foreach (var bank in banks)
 {
-    var firstDigit = bank.Max();
-    var firstDigitIndex = bank.IndexOf(firstDigit);
-
-    if (firstDigitIndex == bank.Length - 1)
-    {
-        var secondDigit = bank[..firstDigitIndex].Max();
-        sum += int.Parse(secondDigit.ToString() + firstDigit);
-    }
-    else
-    {
-        var secondDigit = bank[(firstDigitIndex + 1)..].Max();
-        sum += int.Parse(firstDigit.ToString() + secondDigit);
-    }
+    var firstDigit = bank[..^1].Max();
+    var index = bank.IndexOf(firstDigit) + 1;
+    var secondDigit = bank[index..].Max();
+    sum += uint.Parse(firstDigit.ToString() + secondDigit);
 }
 
 Console.WriteLine($"Sum: {sum}");
